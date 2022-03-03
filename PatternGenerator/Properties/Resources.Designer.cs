@@ -8,7 +8,7 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace PatternGenerator.Properties
+namespace PatternGeneratorApp.Properties
 {
 
 
