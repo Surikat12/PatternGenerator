@@ -3,14 +3,70 @@
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-        xmlns:local="clr-namespace:PatternGeneratorApp"
         mc:Ignorable="d"
-        Title="MainWindow" Height="450" Width="800">
-    <Grid>
-        <Grid.ColumnDefinitions>
-            <ColumnDefinition Width="89*"/>
-            <ColumnDefinition Width="711*"/>
-        </Grid.ColumnDefinitions>
-
-    </Grid>
+        Title="Pattern Generator" Height="450" Width="800">
+    <TabControl>
+        <TabItem x:Name="compositeTab">
+            <TabItem.Header>
+                <StackPanel Orientation="Horizontal">
+                    <TextBlock Margin="3">Паттерн Компоновщик</TextBlock>
+                </StackPanel>
+            </TabItem.Header>
+            <TabItem.Content>
+                <StackPanel>
+                    <StackPanel Height="27" Orientation="Horizontal">
+                        <Label Content="Название класса компонента"/>
+                        <TextBox x:Name="ComponentNameBox" TextWrapping="Wrap" Text="Component" Width="120" HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                    </StackPanel>
+                    <StackPanel Height="27" Orientation="Horizontal">
+                        <Label Content="Название класса листа           "/>
+                        <TextBox x:Name="LeafNameBox" TextWrapping="Wrap" Text="Leaf" Width="120" HorizontalAlignment="Center" VerticalAlignment="Center" Margin="0,0,10,0"/>
+                        <Label Content="                                                                        "/>
+                        <Button x:Name="CompGenerateButton" Content="Сгенерировать" Click="CompGenerateButton_Click"/>
+                    </StackPanel>
+                    <StackPanel Height="27" Orientation="Horizontal">
+                        <Label Content="Название пространства имён"/>
+                        <TextBox x:Name="CompNamespaceNameBox" TextWrapping="Wrap" Text="Composite" Width="120" HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                    </StackPanel>
+                    <Label Content="Результат" HorizontalAlignment="Center"/>
+                    <ScrollViewer Height="290" VerticalScrollBarVisibility="Auto" Background="#FFC6C6C6" BorderBrush="Black">
+                        <TextBlock x:Name="CompResBlock" Width="Auto" TextWrapping="Wrap"/>
+                    </ScrollViewer>
+                </StackPanel>
+            </TabItem.Content>
+        </TabItem>
+        <TabItem x:Name="visitorTab">
+            <TabItem.Header>
+                <StackPanel Orientation="Horizontal">
+                    <TextBlock Margin="3">Паттерн Посетитель</TextBlock>
+                </StackPanel>
+            </TabItem.Header>
+            <TabItem.Content>
+                <StackPanel>
+                    <StackPanel Height="27" Orientation="Horizontal">
+                        <Label Content="Название интерфейса компонента"/>
+                        <TextBox x:Name="IComponentNameBox" TextWrapping="Wrap" Text="IComponent" Width="120" HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                    </StackPanel>
+                    <StackPanel Height="27" Orientation="Horizontal">
+                        <Label Content="Название интерфейса посетителя  "/>
+                        <TextBox x:Name="IVisitorNameBox" TextWrapping="Wrap" Text="IVisitor" Width="120" HorizontalAlignment="Center" VerticalAlignment="Center" Margin="0,0,10,0"/>
+                        <Label Content="                                                                        "/>
+                        <Button x:Name="VisitGenerateButton" Content="Сгенерировать" Click="VisitGenerateButton_Click"/>
+                    </StackPanel>
+                    <StackPanel Height="27" Orientation="Horizontal">
+                        <Label Content="Название класса посетителя           "/>
+                        <TextBox x:Name="VisitorNameBox" TextWrapping="Wrap" Text="ConcreteVisitor" Width="120" HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                    </StackPanel>
+                    <StackPanel Height="27" Orientation="Horizontal">
+                        <Label Content="Название пространства имён         "/>
+                        <TextBox x:Name="VisitNamespaceNameBox" TextWrapping="Wrap" Text="Visitor" Width="120" HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                    </StackPanel>
+                    <Label Content="Результат" HorizontalAlignment="Center"/>
+                    <ScrollViewer Height="290" VerticalScrollBarVisibility="Auto" Background="#FFC6C6C6" BorderBrush="Black">
+                        <TextBlock x:Name="VisitResBlock" Width="Auto" TextWrapping="Wrap"/>
+                    </ScrollViewer>
+                </StackPanel>
+            </TabItem.Content>
+        </TabItem>
+    </TabControl>
 </Window>

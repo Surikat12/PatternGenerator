@@ -1,28 +1,39 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using System.IO;
 using System.Windows;
-using System.Windows.Controls;
-using System.Windows.Data;
-using System.Windows.Documents;
-using System.Windows.Input;
-using System.Windows.Media;
-using System.Windows.Media.Imaging;
-using System.Windows.Navigation;
-using System.Windows.Shapes;
+
 
 namespace PatternGeneratorApp
 {
-    /// <summary>
-    /// Interaction logic for MainWindow.xaml
-    /// </summary>
     public partial class MainWindow : Window
     {
+        private PatternGenerator _patternGenerator;
+
         public MainWindow()
         {
             InitializeComponent();
+
+            var compositePath = Path.Combine("Templates", "CompositePattern.txt");
+            var visitorPath = Path.Combine("Templates", "VisitorPattern.txt");
+            _patternGenerator = new PatternGenerator(compositePath, visitorPath);
+        }
+
+        public void CompGenerateButton_Click(object sender, RoutedEventArgs e)
+        {
+            var componentName = ComponentNameBox.Text;
+            var leafName = LeafNameBox.Text;
+            var namespaceName = CompNamespaceNameBox.Text;
+            var res = _patternGenerator.GenerateComposite(componentName, leafName, namespaceName);
+            CompResBlock.Text = res;
+        }
+
+        public void VisitGenerateButton_Click(object sender, RoutedEventArgs e)
+        {
+            var iComponentName = IComponentNameBox.Text;
+            var iVisitorName = IVisitorNameBox.Text;
+            var visitorName = VisitorNameBox.Text;
+            var namespaceName = VisitNamespaceNameBox.Text;
+            var res = _patternGenerator.GenerateVisitor(iComponentName, iVisitorName, visitorName, namespaceName);
+            VisitResBlock.Text = res;
         }
     }
 }
